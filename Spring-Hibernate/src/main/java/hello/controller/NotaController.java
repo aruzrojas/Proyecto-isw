@@ -27,17 +27,17 @@ public class NotaController {
     }
 
     @PostMapping("/secret")
-    public String secret(@ModelAttribute("notaForm") Nota notaForm, BindingResult bindingResult){
+    public String secret(@ModelAttribute("userForm") Nota notaForm, BindingResult bindingResult){
         notaValidator.validate(notaForm, bindingResult);
 
-        if(bindingResult.hasErrors()){
-            return "signup";
+        if (notaService.crear(notaForm)){
+        	return "redirect:/secret";
         }
-
-        notaService.crear(notaForm);
-
-        return "secret";
+        else{
+        	return "greeting";
+        }
+                
+        
     }
-
 
 }

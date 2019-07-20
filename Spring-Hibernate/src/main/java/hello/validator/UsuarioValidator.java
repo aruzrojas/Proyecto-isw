@@ -47,4 +47,13 @@ public class UsuarioValidator implements Validator {
             errors.rejectValue("correo","Inv.userForm.correo");
         }
     }
+
+    public void ValidateLogin(Object o, Errors errors){
+        Usuario user = (Usuario) o;
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors,"username","NotEmpty");
+        if(user.getUsername() == null){
+            errors.rejectValue("username","Size.userForm.username");
+        }
+
+    }
 }

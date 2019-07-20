@@ -53,12 +53,4 @@ public class UsuarioController {
         }
         return "login";
     }
-
-    @PostMapping("/login")
-    public String login(Model model){
-
-
-        
-        return "secret";
-    }
 }

@@ -30,6 +30,11 @@ public class NotaValidator implements Validator {
             errors.rejectValue("nombre","Size.notaForm.nombre");
         }
 
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors,"titulo","NotEmpty");
+        if(nota.getContenido().length()<3 || nota.getContenido().length()>20){
+            errors.rejectValue("titulo","Size.notaForm.titulo");
+        }        
+
         ValidationUtils.rejectIfEmptyOrWhitespace(errors,"contenido","NotEmpty");
         if(nota.getContenido().length()<10 || nota.getContenido().length()>99){
             errors.rejectValue("contenido","Size.notaForm.contenido");
